@@ -22,9 +22,10 @@
     "node": ">=12.16.0",
     "yarn": ">=1.22.4"
   },
+  "main": "./build/index.js",
   "scripts": {
     "cleanup": "./cleanup.sh",
-    "build": "yarn workspaces run build",
+    "build": "yarn workspaces run build && cp entrypoint/index.js build/ && rm -f build/algob && mkdir -p build && ln -s ../packages/algob/build build/algob",
     "watch": "tsc --build --watch packages/*",
     "test": "yarn workspaces run test",
     "lint": "yarn workspaces -p run lint",
